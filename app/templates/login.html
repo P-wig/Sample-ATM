@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Login</h2>
+  <form method="post" action="{{ url_for('account_login.login') }}">
+    <label for="pin">Enter your 4-digit PIN:</label>
+    <input type="text" name="pin" id="pin" maxlength="4" required>
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}
