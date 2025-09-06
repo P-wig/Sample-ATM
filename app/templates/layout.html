@@ -12,10 +12,7 @@
         <nav>
           <ul class="menu">
             {% if session.get('pin') %}
-              <li><a href="{{ url_for('account_transaction.render_account_page') }}">Account</a></li>
               <li><a href="{{ url_for('account_login.logout') }}">Logout</a></li>
-            {% else %}
-              <li><a href="{{ url_for('account_login.render_login_page') }}">Home</a></li>
             {% endif %}
           </ul>
         </nav>

@@ -221,7 +221,6 @@ h3 {
   color: #fff;
 }
 
-/* Unified icon styles for all action buttons */
 .icon-gear::before,
 .icon-x::before,
 .icon-check::before,
@@ -321,4 +320,136 @@ h3 {
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+}
+
+/* LOGIN STYLES */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pin-label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+  display: block;
+}
+
+.pin-input {
+  font-size: 2.5em;
+  text-align: center;
+  width: 300px;        
+  margin-bottom: 24px;
+  letter-spacing: 16px; 
+  background: #f2f2f2;
+  border: 2px solid #7289da;
+  border-radius: 8px;
+  padding: 12px;        
+}
+
+.keypad {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.key {
+  width: 120px;     
+  height: 60px;         
+  margin: 6px;
+  font-size: 1.2em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  cursor: pointer;
+  color: #444;
+}
+
+#confirm {
+  background: #4CAF50;
+  color: white;
+}
+
+#cancel {
+  background: #f44336;
+  color: white;
+}
+
+.keypad-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+#confirm,
+#cancel {
+  width: 120px;
+  height: 60px;
+  font-size: 1.2em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.pin-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 60px;
+  margin-bottom: 24px;
+  font-size: 2.5em;
+  background: #f2f2f2;
+  border: 2px solid #7289da;
+  border-radius: 8px;
+  padding: 12px;
+  gap: 40px;
+}
+
+.pin-char,
+.pin-placeholder {
+  text-align: center;
+  display: inline-block;
+}
+
+.pin-char {
+  color: #444;
+}
+
+.pin-placeholder {
+  color: #7289da;
+  opacity: 0.4;
+}
+
+/* Add to main.css */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 8px; right: 12px;
+  font-size: 2em;
+  cursor: pointer;
 }

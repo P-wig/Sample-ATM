@@ -1,9 +1,43 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h2>Login</h2>
-  <form method="post" action="{{ url_for('account_login.login') }}">
-    <label for="pin">Enter your 4-digit PIN:</label>
-    <input type="text" name="pin" id="pin" maxlength="4" required>
-    <button type="submit">Login</button>
-  </form>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form" method="post" action="{{ url_for('account_login.login') }}">
+      <label for="pin" class="pin-label">Enter your 4-digit PIN:</label>
+      <div id="pin-display" class="pin-display"></div>
+      <input type="hidden" name="pin" id="pin" maxlength="4" required>
+      <div id="keypad" class="keypad">
+        <div class="keypad-row">
+          <button type="button" class="key" data-key="1">1</button>
+          <button type="button" class="key" data-key="2">2</button>
+          <button type="button" class="key" data-key="3">3</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" data-key="4">4</button>
+          <button type="button" class="key" data-key="5">5</button>
+          <button type="button" class="key" data-key="6">6</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" data-key="7">7</button>
+          <button type="button" class="key" data-key="8">8</button>
+          <button type="button" class="key" data-key="9">9</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" id="cancel">Cancel</button>
+          <button type="button" class="key" data-key="0">0</button>
+          <button type="button" class="key" id="confirm">Confirm</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="error-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <p>Invalid PIN. Please try again.</p>
+    </div>
+  </div>
+  <!-- Add this hidden flag above your modal -->
+  <div id="error-flag" style="display:none;">{{ '1' if show_error else '' }}</div>
+
+  <script src="{{ url_for('static', filename='js/login_keypad.js') }}"></script>
 {% endblock %}

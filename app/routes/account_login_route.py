@@ -1,4 +1,4 @@
-from flask import Blueprint, request, session, jsonify, render_template
+from flask import Blueprint, request, session, render_template, redirect, url_for
 import csv
 
 def validate_pin(pin):
@@ -10,13 +10,13 @@ def validate_pin(pin):
     return False
 
 def get_blueprint():
-    account_login_blueprint = Blueprint('account_login', __name__, url_prefix='/login')
+    account_login_blueprint = Blueprint('account_login', __name__, url_prefix='')
 
     @account_login_blueprint.route('/', methods=['GET'])
     def render_login_page():
         return render_template('login.html')
 
-    @account_login_blueprint.route('/', methods=['POST'])
+    @account_login_blueprint.route('/login', methods=['POST'])
     def login():
         """
         User login with PIN
@@ -35,8 +35,8 @@ def get_blueprint():
         pin = request.form.get('pin')
         if validate_pin(pin):
             session['pin'] = pin
-            return jsonify({"message": "Login successful"}), 200
-        return jsonify({"message": "Invalid PIN"}), 401
+            return redirect(url_for('account_transaction.render_account_page'))
+        return render_template('login.html', show_error=True)
 
     @account_login_blueprint.route('/logout', methods=['GET'])
     def logout():
@@ -48,6 +48,6 @@ def get_blueprint():
             description: Logout successful
         """
         session.pop('pin', None)
-        return jsonify({"message": "Logout successful"}), 200
+        return redirect(url_for('account_login.render_login_page'))
 
     return account_login_blueprint
