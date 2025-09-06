@@ -1,6 +1,61 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h2>Account</h2>
-  <p>Your current balance: ${{ balance }}</p>
-  <!-- Add deposit/withdrawal forms here -->
+  <div class="transaction-container">
+    <h2>Account</h2>
+    <p class="balance-text">Your current balance: ${{ "%.2f"|format(balance) }}</p>
+    <p class="limit-text">Your daily withdrawal limit: ${{ "%.2f"|format(withdrawal_limit) }}</p>
+    <div class="transaction-actions">
+      <button id="deposit-btn" class="transaction-btn">Deposit</button>
+      <button id="withdraw-btn" class="transaction-btn">Withdraw</button>
+    </div>
+    <div id="amount-entry" style="display:none; flex-direction:column; align-items:center;">
+      <label id="amount-label" for="amount-display" class="pin-label"></label>
+      <div id="amount-display" class="pin-display"></div>
+      <input type="hidden" id="amount-input" name="amount">
+      <div id="amount-keypad" class="keypad">
+        <div class="keypad-row">
+          <button type="button" class="key" data-key="1">1</button>
+          <button type="button" class="key" data-key="2">2</button>
+          <button type="button" class="key" data-key="3">3</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" data-key="4">4</button>
+          <button type="button" class="key" data-key="5">5</button>
+          <button type="button" class="key" data-key="6">6</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" data-key="7">7</button>
+          <button type="button" class="key" data-key="8">8</button>
+          <button type="button" class="key" data-key="9">9</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" id="amount-cancel">Cancel</button>
+          <button type="button" class="key" data-key="0">0</button>
+          <button type="button" class="key" id="amount-confirm">Confirm</button>
+        </div>
+        <div class="keypad-row">
+          <button type="button" class="key" data-key=".">.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="success-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="close-success-modal" class="close">&times;</span>
+      <p id="success-message"></p>
+    </div>
+  </div>
+  <div id="error-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="close-error-modal" class="close">&times;</span>
+      <p id="error-message"></p>
+    </div>
+  </div>
+  <div id="limit-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="close-limit-modal" class="close">&times;</span>
+      <p id="limit-message"></p>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/transactions.js') }}"></script>
 {% endblock %}

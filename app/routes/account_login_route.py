@@ -14,6 +14,15 @@ def get_blueprint():
 
     @account_login_blueprint.route('/', methods=['GET'])
     def render_login_page():
+        """
+        Render the login page
+        ---
+        tags:
+          - Account
+        responses:
+          200:
+            description: Renders the login page
+        """
         return render_template('login.html')
 
     @account_login_blueprint.route('/login', methods=['POST'])
@@ -21,11 +30,14 @@ def get_blueprint():
         """
         User login with PIN
         ---
+        consumes:
+          - application/x-www-form-urlencoded
         parameters:
           - name: pin
             in: formData
             type: string
             required: true
+            description: 4-digit PIN
         responses:
           200:
             description: Login successful
@@ -43,6 +55,8 @@ def get_blueprint():
         """
         User logout
         ---
+        tags:
+          - Account
         responses:
           200:
             description: Logout successful

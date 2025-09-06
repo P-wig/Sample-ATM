@@ -431,7 +431,6 @@ h3 {
   opacity: 0.4;
 }
 
-/* Add to main.css */
 .modal {
   position: fixed;
   z-index: 1000;
@@ -452,4 +451,48 @@ h3 {
   top: 8px; right: 12px;
   font-size: 2em;
   cursor: pointer;
+}
+
+.transaction-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.balance-text {
+  font-size: 1.5em;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.transaction-actions {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.transaction-btn {
+  width: 140px;
+  height: 50px;
+  font-size: 1.2em;
+  border-radius: 8px;
+  border: 1px solid #7289da;
+  background: #f2f2f2;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.transaction-btn:hover {
+  background: #7289da;
+  color: #fff;
+}
+
+.limit-text {
+  font-size: 1.2em;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #7289da;
 }
