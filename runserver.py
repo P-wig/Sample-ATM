@@ -10,8 +10,9 @@
 # In the VSCode terminal window type the following:
 #    pip install -r requirements.txt
 #    python runserver.py
-#    Navigate to http://localhost:5000 link in terminal window
+#    Navigate to http://127.0.0.1:5000 link in terminal window
 #    Navigate to http://127.0.0.1:5000/apidocs for the swagger API documentation
+#    Valid Pins for testing are stored in /data/accounts.csv, for example: 1234,5678
 #    To stop the server, go to the terminal window and press Ctrl-C
 
 import sys 
