@@ -49,19 +49,20 @@ def get_blueprint():
         Get account balance and withdrawal limit
         ---
         tags:
-        - Account
+          - Account
         responses:
-        200:
+          200:
             description: Returns the account balance and withdrawal limit
             schema:
-            type: object
-            properties:
+              type: object
+              properties:
                 balance:
-                type: number
+                  type: number
+                  example: 1500.00
                 withdrawal_limit:
-                type: number
-                example: 1500.00
-        401:
+                  type: number
+                  example: 500.00
+          401:
             description: Not logged in
         """
         pin = session.get('pin')
